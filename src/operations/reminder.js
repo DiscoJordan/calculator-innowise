@@ -1,1 +1,1 @@
-export const reminder=(a,b=100)=>a/b;
+export const reminder = (a, b = 100) => a / b;

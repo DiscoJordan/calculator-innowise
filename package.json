@@ -13,9 +13,9 @@
   "lint-staged": {
     "*.js": [
       "eslint --fix",
-      "prettier --write"
+      "prettier --write",
+      "git add"
     ]
-    
   },
   "keywords": [],
   "author": "",

@@ -1,1 +1,1 @@
-export const reminder=(a)=>-a;
+export const reminder = (a) => -a;
