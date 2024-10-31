@@ -8,7 +8,6 @@ let display = document.getElementById('currentValue');
 let currentValue = '0';
 let previousValue = null;
 let operator = null;
-let secondArg = null;
 
 function updateDisplay() {
   display.value = currentValue;
@@ -68,7 +67,10 @@ document.querySelectorAll('.btn').forEach((button) => {
       currentValue = -currentValue;
       updateDisplay();
     } else if (['/', '*', '-', '+'].includes(buttonValue)) {
-      handleOperator(buttonValue);
+      if(!isNaN(currentValue.toString()[currentValue.length-1])){
+         handleOperator(buttonValue);
+      }
+     
     } else if (buttonValue === 'equal' && currentValue && operator) {
       calculate(previousValue, currentValue, operator);
       previousValue = null;
