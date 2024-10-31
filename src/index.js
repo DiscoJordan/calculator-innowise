@@ -41,7 +41,7 @@ function calculate(a, b, operation) {
   else if (operation === '/') currentValue = divide(value1, value2);
   if (currentValue.toString().includes('.')) {
     if (currentValue.toString().split('.')[1].length > 5) {
-      currentValue = Number(currentValue).toFixed(5);
+      currentValue = parseFloat(Number(currentValue).toFixed(5));
     }
   }
 
@@ -55,8 +55,18 @@ document.querySelectorAll('.btn').forEach((button) => {
     let buttonValue = event.currentTarget.value;
     if (!isNaN(buttonValue)) {
       handleNumber(buttonValue);
-    } else if (buttonValue === '.' && !currentValue.includes('.')) {
-      currentValue += '.';
+    } else if (buttonValue === '.') {
+      if (
+        !currentValue
+          .toString()
+          .split(previousValue + operator)
+          .join('')
+          .includes('.') ||
+        !currentValue.toString().includes('.')
+      ) {
+        currentValue += '.';
+      }
+
       updateDisplay();
     } else if (buttonValue === 'clear') {
       currentValue = '0';
@@ -67,10 +77,9 @@ document.querySelectorAll('.btn').forEach((button) => {
       currentValue = -currentValue;
       updateDisplay();
     } else if (['/', '*', '-', '+'].includes(buttonValue)) {
-      if(!isNaN(currentValue.toString()[currentValue.toString().length-1])){
-         handleOperator(buttonValue);
+      if (!isNaN(currentValue.toString()[currentValue.toString().length - 1])) {
+        handleOperator(buttonValue);
       }
-     
     } else if (buttonValue === 'equal' && currentValue && operator) {
       calculate(previousValue, currentValue, operator);
       previousValue = null;
