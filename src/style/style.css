@@ -23,12 +23,15 @@
   color: white;
 }
 input {
+  
   background-color: black;
   border: 0;
   color: white;
   font-weight: 500;
   font-size: 64px;
   text-align: end;
+
+
 }
 input:focus {
   outline: none;

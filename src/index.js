@@ -5,12 +5,16 @@ import { subtract } from './operations/subtract.js';
 
 let display = document.getElementById('currentValue');
 
+
+
 let currentValue = '0';
 let previousValue = null;
 let operator = null;
 
+
 function updateDisplay() {
   display.value = currentValue;
+  display.scrollLeft = display.scrollWidth;
 }
 
 function handleNumber(number) {
