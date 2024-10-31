@@ -11,11 +11,11 @@
   </head>
   <body class="body">
     <main class="main-container">
-      <input type="number" readonly/>
+      <input id="currentValue" type="text" value="0" readonly />
 
       <div class="buttons">
-        <button class="gray">AC</button>
-        <button class="gray">
+        <button value="clear" class="btn gray">AC</button>
+        <button value="negate" class="btn gray">
           <img
             class="signIcon"
             src="https://i.imgur.com/uyEsURb.png"
@@ -23,7 +23,7 @@
             alt="plus-minus"
           />
         </button>
-        <button class="gray">
+        <button value="%" class="btn gray">
           <img
             class="signIcon"
             src="https://i.imgur.com/FSolZmD.png"
@@ -31,7 +31,7 @@
             alt="reminder"
           />
         </button>
-        <button class="orange">
+        <button value="/" class="btn orange">
           <img
             class="signIcon"
             src="https://i.imgur.com/xfZ0TJp.png"
@@ -39,10 +39,10 @@
             alt="divide"
           />
         </button>
-        <button class="dark-gray">7</button>
-        <button class="dark-gray">8</button>
-        <button class="dark-gray">9</button>
-        <button class="orange">
+        <button value="7" class="btn dark-gray">7</button>
+        <button value="8" class="btn dark-gray">8</button>
+        <button value="9" class="btn dark-gray">9</button>
+        <button value="*" class="btn orange">
           <img
             class="signIcon"
             src="https://i.imgur.com/M3hRuSM.png"
@@ -51,21 +51,21 @@
           />
         </button>
 
-        <button class="dark-gray">4</button>
-        <button class="dark-gray">5</button>
-        <button class="dark-gray">6</button>
-        <button class="orange">
+        <button value="4" class="btn dark-gray">4</button>
+        <button value="5" class="btn dark-gray">5</button>
+        <button value="6" class="btn dark-gray">6</button>
+        <button value="-" class="btn orange">
           <img
             class="signIcon"
             src="https://i.imgur.com/2j1LHPi.png"
             referrerpolicy="no-referrer"
-            alt="minus"
+            alt="subtract"
           />
         </button>
-        <button class="dark-gray">1</button>
-        <button class="dark-gray">2</button>
-        <button class="dark-gray">3</button>
-        <button class="orange">
+        <button value="1" class="btn dark-gray">1</button>
+        <button value="2" class="btn dark-gray">2</button>
+        <button value="3" class="btn dark-gray">3</button>
+        <button value="+" class="btn orange">
           <img
             class="signIcon"
             src="https://i.imgur.com/UEGLUfA.png"
@@ -73,7 +73,7 @@
             alt="plus"
           />
         </button>
-        <button class="dark-gray">
+        <button value="sun" class="btn dark-gray">
           <img
             class="signIcon"
             src="https://i.imgur.com/snp1idS.png"
@@ -87,10 +87,10 @@
             alt="moon"
           /> -->
         </button>
-        <button class="dark-gray">0</button>
-        <button class="dark-gray">,</button>
+        <button value="0" class="btn dark-gray">0</button>
+        <button value="," class="btn dark-gray">,</button>
 
-        <button class="orange">
+        <button value="equal" class="btn orange">
           <img
             class="signIcon"
             src="https://i.imgur.com/Wo72uXf.png"
