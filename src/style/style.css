@@ -1,0 +1,77 @@
+:root {
+    --orange: #F2A33C;
+    --black: #000;
+    --dark-gray:#2A2A2C;
+    --light-gray:#5C5C5F;
+  }
+
+.body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.main-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    gap: 40px;
+    width: 380px;
+    height: 800px;
+    padding: 24px;
+    border-radius: 20px;
+    background-color: var(--black);
+    color: white;
+
+}
+input{
+    background-color: black;
+    border: 0;
+    color: white;
+    font-weight: 500;
+    font-size: 64px;
+    text-align: end;
+    
+}
+input:focus{
+    outline: none;
+}
+.buttons{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    align-items: center;
+    justify-items: center;
+    gap: 10px;
+}
+button{
+    color:#fff;
+    font-size: 32px;
+    font-weight: 500;
+    border:0;
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: 100%;
+
+}
+button:hover{
+    filter: brightness(110%);
+}
+button:active{
+    filter: brightness(80%);
+}
+
+.signIcon{
+    width: 40px;
+}
+.rotate{
+    transform: rotate(45deg);
+    width: 25px;
+}
+.gray{
+    background-color: var(--light-gray);
+}
+.orange{
+    background-color: var(--orange);
+}
+.dark-gray{
+    background-color: var(--dark-gray);
+}
