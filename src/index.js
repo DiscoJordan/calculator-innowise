@@ -67,7 +67,7 @@ document.querySelectorAll('.btn').forEach((button) => {
       currentValue = -currentValue;
       updateDisplay();
     } else if (['/', '*', '-', '+'].includes(buttonValue)) {
-      if(!isNaN(currentValue.toString()[currentValue.length-1])){
+      if(!isNaN(currentValue.toString()[currentValue.toString().length-1])){
          handleOperator(buttonValue);
       }
      
