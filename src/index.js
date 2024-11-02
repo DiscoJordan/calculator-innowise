@@ -13,7 +13,7 @@ let firstValue = null;
 let secondValue = null;
 let operator = null;
 let lastOperation = null;
-
+toggleTheme()
 function toggleTheme() {
   const currentTheme = document.documentElement.getAttribute('data-theme');
   const newTheme = currentTheme === 'light' ? 'dark' : 'light';
@@ -25,7 +25,7 @@ function toggleTheme() {
       : 'https://i.imgur.com/JZfjpM8.png';
 }
 
-const savedTheme = localStorage.getItem('theme') || 'dark';
+const savedTheme = localStorage.getItem('theme') || 'light';
 document.documentElement.setAttribute('data-theme', savedTheme);
 
 
