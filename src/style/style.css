@@ -1,8 +1,19 @@
 :root {
-  --orange: #f2a33c;
-  --black: #000;
-  --dark-gray: #2a2a2c;
+  --main: #ff2222;
+  --background: #000;
+  --text:#fff;
+  --alternative: #2a2a2c;
   --light-gray: #5c5c5f;
+  --secondText: #9d9d9d;
+}
+
+[data-theme='light'] {
+  --main: #559fff;
+  --background: #c9e6ff;
+  --text:#000000;
+  --alternative: #ffffff;
+  --light-gray: #5c5c5f;
+  --secondText: #393939;
 }
 
 .body {
@@ -19,15 +30,15 @@
   height: 800px;
   padding: 24px;
   border-radius: 20px;
-  background-color: var(--black);
+  background-color: var(--background);
   color: white;
 }
 input {
-  background-color: black;
+  background-color: var(--background);
   border: 0;
-  color: white;
+  color: var(--text);
   font-weight: 500;
-  font-size: 24px;
+  font-size: 44px;
   text-align: end;
 
 }
@@ -35,8 +46,8 @@ input:focus {
   outline: none;
 }
 #lastOperation{
-  color: #9d9d9d;
-  font-size: 44px;
+  color: var(--secondText);
+  font-size: 24px;
 }
 .buttons {
   display: grid;
@@ -46,7 +57,7 @@ input:focus {
   gap: 10px;
 }
 button {
-  color: #fff;
+  color: var(--text);
   font-size: 32px;
   font-weight: 500;
   border: 0;
@@ -73,8 +84,8 @@ button:active {
   background-color: var(--light-gray);
 }
 .orange {
-  background-color: var(--orange);
+  background-color: var(--main);
 }
 .dark-gray {
-  background-color: var(--dark-gray);
+  background-color: var(--alternative);
 }

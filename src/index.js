@@ -5,6 +5,8 @@ import { subtract } from './operations/subtract.js';
 
 let display = document.getElementById('currentValue');
 let smallDisplay = document.getElementById('lastOperation');
+let themeImage = document.getElementById('themeImage');
+
 
 let currentValue = '0';
 let firstValue = null;
@@ -12,15 +14,26 @@ let secondValue = null;
 let operator = null;
 let lastOperation = null;
 
+function toggleTheme() {
+  const currentTheme = document.documentElement.getAttribute('data-theme');
+  const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+  document.documentElement.setAttribute('data-theme', newTheme);
+  localStorage.setItem('theme', newTheme);
+  themeImage.src =
+  currentTheme === 'light'
+      ? 'https://i.imgur.com/snp1idS.png'
+      : 'https://i.imgur.com/JZfjpM8.png';
+}
+
+const savedTheme = localStorage.getItem('theme') || 'dark';
+document.documentElement.setAttribute('data-theme', savedTheme);
+
+
+
 function updateDisplay() {
   display.value = currentValue;
   smallDisplay.value = lastOperation;
   display.scrollLeft = display.scrollWidth;
-  console.log('firstValue: ', firstValue);
-  console.log('operator: ', operator);
-  console.log('secondValue: ', secondValue);
-  console.log('currentValue:', currentValue);
-  console.log('-------------');
 }
 
 function handleValue(value) {
@@ -35,7 +48,7 @@ function handleValue(value) {
       currentValue += '.';
     }
   } else if (value === '%') {
-    if ((!operator || secondValue.length > 0)) {
+    if (!operator || secondValue.length > 0) {
       currentValue += '%';
     }
   } else {
@@ -111,11 +124,6 @@ function calculate(negate = 0) {
 
   firstValue = parseFloat(firstValue);
   secondValue = parseFloat(secondValue);
-  console.log('firstValue:', firstValue);
-  console.log('operator:', operator);
-  console.log('secondValue:', secondValue);
-  console.log('currentValue:', currentValue);
-  console.log('-------------');
   lastOperation = currentValue;
   if (negate) {
     lastOperation = `-(${currentValue})`;
@@ -152,7 +160,6 @@ function calculate(negate = 0) {
 }
 
 document.querySelectorAll('.btn').forEach((button) => {
-
   button.addEventListener('click', (event) => {
     let buttonValue = event.currentTarget.value;
     if (!isNaN(buttonValue) || buttonValue === '.' || buttonValue === '%') {
@@ -169,15 +176,15 @@ document.querySelectorAll('.btn').forEach((button) => {
       currentValue !== '0' &&
       currentValue !== 'Divide by zero'
     ) {
-      debugger
       if (!operator && !secondValue) {
         let currentValueCopy = currentValue;
+        lastOperation = currentValue;
         while (currentValueCopy.toString().includes('%')) {
           currentValue = parseFloat(currentValue) / 100;
           currentValueCopy = currentValueCopy.toString().slice(0, -1);
         }
         currentValue = -currentValue;
-        lastOperation = currentValue;
+
         updateDisplay();
       } else if (operator && secondValue) {
         calculate(true);
@@ -204,6 +211,6 @@ document.querySelectorAll('.btn').forEach((button) => {
     ) {
       operator = '%';
       calculate();
-    }
+    } else if (buttonValue === 'theme') toggleTheme();
   });
 });
