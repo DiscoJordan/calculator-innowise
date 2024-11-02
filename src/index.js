@@ -19,11 +19,12 @@ function updateDisplay() {
   console.log('firstValue: ', firstValue);
   console.log('operator: ', operator);
   console.log('secondValue: ', secondValue);
+  console.log('currentValue:', currentValue);
   console.log('-------------');
 }
 
-function handleNumber(numberOrDot) {
-  if (numberOrDot === '.') {
+function handleValue(value) {
+  if (value === '.') {
     if (!operator && !currentValue.toString().includes('.')) {
       currentValue += '.';
     } else if (
@@ -33,14 +34,18 @@ function handleNumber(numberOrDot) {
     ) {
       currentValue += '.';
     }
+  } else if (value === '%') {
+    if ((!operator || secondValue.length > 0)) {
+      currentValue += '%';
+    }
   } else {
-    if (secondValue === '0' ) {
+    if (secondValue === '0') {
       currentValue = currentValue.toString().slice(0, -1);
-      currentValue += numberOrDot;
+      currentValue += value;
     } else {
       currentValue == 0 || currentValue == 'Divide by zero'
-        ? (currentValue = numberOrDot)
-        : (currentValue += numberOrDot);
+        ? (currentValue = value)
+        : (currentValue += value);
     }
   }
 
@@ -49,6 +54,15 @@ function handleNumber(numberOrDot) {
       .toString()
       .split(firstValue + operator)
       .join('');
+  }
+  if (
+    (operator && secondValue > 94906264) ||
+    (!operator && currentValue > 94906264)
+  ) {
+    currentValue = currentValue.toString().slice(0, -1);
+    if (secondValue) {
+      secondValue = secondValue.toString().slice(0, -1);
+    }
   }
   updateDisplay();
 }
@@ -70,11 +84,37 @@ function handleOperator(currentOperator) {
 }
 
 function calculate(negate = 0) {
-  firstValue = parseFloat(currentValue);
+  let secondValueCopy = secondValue || 0;
+
+  if (currentValue.toString()[0] == '-') {
+    firstValue = '-' + currentValue.toString().split(operator)[1];
+  } else {
+    firstValue = currentValue.toString().split(operator)[0];
+  }
+
+  let firstValueCopy = firstValue;
+
+  if (secondValueCopy?.toString()?.includes('%')) {
+    while (secondValueCopy.toString().includes('%')) {
+      secondValue = parseFloat(secondValue) / 100;
+      secondValueCopy = secondValueCopy.toString().slice(0, -1);
+    }
+    if (!firstValueCopy.toString().includes('%')) {
+      secondValue = secondValue * firstValue;
+    }
+  }
+
+  while (firstValueCopy.toString().includes('%')) {
+    firstValue = parseFloat(firstValue) / 100;
+    firstValueCopy = firstValueCopy.toString().slice(0, -1);
+  }
+
+  firstValue = parseFloat(firstValue);
   secondValue = parseFloat(secondValue);
   console.log('firstValue:', firstValue);
   console.log('operator:', operator);
   console.log('secondValue:', secondValue);
+  console.log('currentValue:', currentValue);
   console.log('-------------');
   lastOperation = currentValue;
   if (negate) {
@@ -89,6 +129,14 @@ function calculate(negate = 0) {
     if (secondValue == 0) {
       currentValue = 'Divide by zero';
     }
+  } else if (operator === '%') {
+    currentValue = currentValue.toString().split('%');
+    console.log(currentValue);
+    if (currentValue[1]) {
+      currentValue = currentValue[0] % currentValue[1];
+    } else {
+      currentValue = currentValue[0] / 100;
+    }
   }
 
   if (currentValue.toString().includes('.')) {
@@ -96,6 +144,7 @@ function calculate(negate = 0) {
       currentValue = parseFloat(Number(currentValue).toFixed(9));
     }
   }
+
   firstValue = currentValue;
   secondValue = null;
   operator = null;
@@ -103,10 +152,11 @@ function calculate(negate = 0) {
 }
 
 document.querySelectorAll('.btn').forEach((button) => {
+
   button.addEventListener('click', (event) => {
     let buttonValue = event.currentTarget.value;
-    if (!isNaN(buttonValue) || buttonValue === '.') {
-      handleNumber(buttonValue);
+    if (!isNaN(buttonValue) || buttonValue === '.' || buttonValue === '%') {
+      handleValue(buttonValue);
     } else if (buttonValue === 'clear') {
       currentValue = '0';
       firstValue = null;
@@ -119,8 +169,16 @@ document.querySelectorAll('.btn').forEach((button) => {
       currentValue !== '0' &&
       currentValue !== 'Divide by zero'
     ) {
+      debugger
       if (!operator && !secondValue) {
+        let currentValueCopy = currentValue;
+        while (currentValueCopy.toString().includes('%')) {
+          currentValue = parseFloat(currentValue) / 100;
+          currentValueCopy = currentValueCopy.toString().slice(0, -1);
+        }
         currentValue = -currentValue;
+        lastOperation = currentValue;
+        updateDisplay();
       } else if (operator && secondValue) {
         calculate(true);
         currentValue = -currentValue;
@@ -138,6 +196,13 @@ document.querySelectorAll('.btn').forEach((button) => {
       operator &&
       secondValue
     ) {
+      calculate();
+    } else if (
+      !operator &&
+      !secondValue &&
+      currentValue.toString().includes('%')
+    ) {
+      operator = '%';
       calculate();
     }
   });
