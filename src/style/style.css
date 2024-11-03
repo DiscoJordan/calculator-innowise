@@ -1,0 +1,91 @@
+:root {
+  --main: #ff2222;
+  --background: #000;
+  --text:#fff;
+  --alternative: #2a2a2c;
+  --light-gray: #5c5c5f;
+  --secondText: #9d9d9d;
+}
+
+[data-theme='light'] {
+  --main: #559fff;
+  --background: #c9e6ff;
+  --text:#000000;
+  --alternative: #ffffff;
+  --light-gray: #5c5c5f;
+  --secondText: #393939;
+}
+
+.body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.main-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  gap: 40px;
+  width: 380px;
+
+  padding: 24px;
+  border-radius: 20px;
+  background-color: var(--background);
+  color: white;
+}
+input {
+  background-color: var(--background);
+  border: 0;
+  color: var(--text);
+  font-weight: 500;
+  font-size: 44px;
+  text-align: end;
+
+}
+input:focus {
+  outline: none;
+}
+#lastOperation{
+  color: var(--secondText);
+  font-size: 24px;
+}
+.buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  align-items: center;
+  justify-items: center;
+  gap: 10px;
+}
+button {
+  color: var(--text);
+  font-size: 32px;
+  font-weight: 500;
+  border: 0;
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 100%;
+  transition: all 0.2s ease-in-out;
+}
+button:hover {
+  filter: brightness(120%);
+}
+button:active {
+  filter: brightness(80%);
+}
+
+.signIcon {
+  width: 40px;
+}
+.rotate {
+  transform: rotate(45deg);
+  width: 25px;
+}
+.gray {
+  background-color: var(--light-gray);
+}
+.orange {
+  background-color: var(--main);
+}
+.dark-gray {
+  background-color: var(--alternative);
+}

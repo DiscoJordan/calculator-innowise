@@ -1,0 +1,42 @@
+{
+  "name": "calculator-innowise",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "build": "webpack --config webpack.config.js",
+    "start": "http-server ./dist -o",
+    "lint": "eslint .",
+    "format": "prettier --write",
+    "prepare": "husky"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint && npm run format && echo 'Lint completed'"
+    }
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@babel/core": "^7.26.0",
+    "@babel/preset-env": "^7.26.0",
+    "@eslint/js": "^9.13.0",
+    "babel-loader": "^9.2.1",
+    "eslint": "^9.14.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "globals": "^15.11.0",
+    "html-inline-css-webpack-plugin": "^1.0.0",
+    "html-webpack-plugin": "^5.6.3",
+    "husky": "^9.1.6",
+    "mini-css-extract-plugin": "^2.9.2",
+    "prettier": "^3.3.3",
+    "webpack": "^5.96.1"
+  },
+  "dependencies": {
+    "css-minimizer-webpack-plugin": "^7.0.0",
+    "http-server": "^14.1.1"
+  }
+}
