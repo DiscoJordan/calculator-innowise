@@ -26,6 +26,7 @@
 
 ```
 cd calculator-innowise
+code .
 npm i
 ```
 
