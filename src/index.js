@@ -1,7 +1,9 @@
+import './style/style.css'
 import { add } from './operations/add.js';
 import { divide } from './operations/divide.js';
 import { multiply } from './operations/multiply.js';
 import { subtract } from './operations/subtract.js';
+
 
 let display = document.getElementById('currentValue');
 let smallDisplay = document.getElementById('lastOperation');
