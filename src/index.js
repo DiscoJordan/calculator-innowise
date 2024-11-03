@@ -98,7 +98,7 @@ function handleOperator(currentOperator) {
 }
 
 function calculate(negate = 0) {
-  let secondValueCopy = secondVa/lue || 0;
+  let secondValueCopy = secondValue || 0;
 
   if (currentValue.toString()[0] == '-' && operator=='-')  {
     firstValue = '-' + currentValue.toString().split(operator)[1];
