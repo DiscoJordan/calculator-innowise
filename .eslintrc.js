@@ -10,5 +10,6 @@ export default {
   },
   rules: {
     'prettier/prettier': 'error',
+    'no-console': 'error'
   },
 };
