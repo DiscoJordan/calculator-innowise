@@ -37,6 +37,7 @@ function updateDisplay() {
 }
 
 function handleValue(value) {
+
   if (value === '.') {
     if (!operator && !currentValue.toString().includes('.')) {
       currentValue += '.';
@@ -56,7 +57,7 @@ function handleValue(value) {
       currentValue = currentValue.toString().slice(0, -1);
       currentValue += value;
     } else {
-      currentValue == 0 || currentValue == 'Divide by zero'
+      currentValue.toString() === '0' || currentValue == 'Divide by zero'
         ? (currentValue = value)
         : (currentValue += value);
     }
@@ -97,9 +98,10 @@ function handleOperator(currentOperator) {
 }
 
 function calculate(negate = 0) {
+debugger
   let secondValueCopy = secondValue || 0;
 
-  if (currentValue.toString()[0] == '-') {
+  if (currentValue.toString()[0] == '-' && operator=='-')  {
     firstValue = '-' + currentValue.toString().split(operator)[1];
   } else {
     firstValue = currentValue.toString().split(operator)[0];
