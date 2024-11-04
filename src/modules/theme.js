@@ -1,3 +1,4 @@
+
 export function toggleTheme(themeImage) {
     const currentTheme = document.documentElement.getAttribute('data-theme');
     const newTheme = currentTheme === 'light' ? 'dark' : 'light';
