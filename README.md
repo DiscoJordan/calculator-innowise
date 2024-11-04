@@ -16,6 +16,7 @@
 - [x] Theme-management
 
 
+[Deploy](https://discojordan.github.io/calculator-innowise/dist/index.html "Deploy")
 # How to run the App
 
 ## 1. Clone local copy of project 
