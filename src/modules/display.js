@@ -1,10 +1,8 @@
+// display.js
 import { state } from './state.js';
 
 export function updateDisplay() {
-  const display = document.getElementById('currentValue');
-  const smallDisplay = document.getElementById('lastOperation');
-
-  display.value = state.currentValue;
-  smallDisplay.value = state.lastOperation;
-  display.scrollLeft = display.scrollWidth;
+  state.display.value = state.currentValue;
+  state.smallDisplay.value = state.lastOperation;
+  state.display.scrollLeft = state.display.scrollWidth;
 }
