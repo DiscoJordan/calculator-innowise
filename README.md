@@ -45,10 +45,10 @@ npm i
 2. ## src - Main dev folder
     1. ## modules - JS modules of calculator
          1. ## display.js - Function to update Display
-         2. ## eventListeners.js - Event listeners for every button on calculator
+         2. ## handlers.js - Handlers for every button on calculator
          3. ## operations.js - Logic of calculator`s buttons and calculations
          4. ## state.js - State of calculator, some variables that holds params
          5. ## theme.js - Theme inicialization and toggling
     2. ## Style - There are all styles for calculator
     3. ## Index.html - HTML Layout 
-    4. ## Index.js - Start-point of calculator, theme initialization
+    4. ## Index.js - Start-point of calculator, theme initialization, Event listeners

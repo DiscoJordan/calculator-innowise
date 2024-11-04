@@ -11,7 +11,9 @@ toggleTheme();
 
 
 document.querySelectorAll('.btn').forEach((button) => {
+
   button.addEventListener('click', (event) => {
+
     let buttonValue = event.currentTarget.value;
     if (!isNaN(buttonValue) || buttonValue === '.' || buttonValue === '%') {
       handleValue(buttonValue);
@@ -26,6 +28,8 @@ document.querySelectorAll('.btn').forEach((button) => {
       buttonValue === 'negate' &&
       state.currentValue !== '0' &&
       state.currentValue !== 'Divide by zero'
+      && state.currentValue !== 'Not a Number'
+
     ) {
       if (!state.operator && !state.secondValue) {
         let currentValueCopy = state.currentValue;
@@ -44,7 +48,7 @@ document.querySelectorAll('.btn').forEach((button) => {
 
     } else if (
       ['/', '*', '-', '+'].includes(buttonValue) &&
-      state.currentValue !== 'Divide by zero'
+      state.currentValue !== 'Divide by zero' && state.currentValue !== 'Not a Number'
     ) {
       handleOperator(buttonValue);
     } else if (
@@ -55,6 +59,7 @@ document.querySelectorAll('.btn').forEach((button) => {
     ) {
       calculate();
     } else if (
+      buttonValue === 'equal' &&
       !state.operator &&
       !state.secondValue &&
       state.currentValue.toString().includes('%')

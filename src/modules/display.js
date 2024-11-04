@@ -1,4 +1,3 @@
-// display.js
 import { state } from './state.js';
 
 export function updateDisplay() {

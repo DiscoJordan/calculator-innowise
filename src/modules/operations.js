@@ -47,6 +47,9 @@ export  function calculate(negate = 0) {
         state.currentValue = state.currentValue.toString().split('%');
       if (state.currentValue[1]) {
         state.currentValue = state.currentValue[0] % state.currentValue[1];
+        if (isNaN(state.currentValue)) {
+            state.currentValue = "Not a Number"
+        }
       } else {
         state.currentValue = state.currentValue[0] / 100;
       }

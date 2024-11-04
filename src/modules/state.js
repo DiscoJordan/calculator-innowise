@@ -1,4 +1,4 @@
-// state.js
+
 export const state = {
     display: document.getElementById('currentValue'),
     smallDisplay: document.getElementById('lastOperation'),
