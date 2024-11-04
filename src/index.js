@@ -4,7 +4,7 @@ import { handleOperator } from './modules/handlers.js';
 import { updateDisplay } from './modules/display.js';
 import { calculate } from './modules/operations.js';
 import { handleValue } from './modules/handlers.js';
-// import './style/style.css';
+import './style/style.css';
 
 
 toggleTheme();
