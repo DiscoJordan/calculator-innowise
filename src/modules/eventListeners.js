@@ -38,13 +38,16 @@ function resetCalculator() {
 }
 
 function handleNegate() {
+   
+   
   if (state.currentValue !== '0' && state.currentValue !== 'Divide by zero') {
     if (!state.operator && !state.secondValue) {
       state.currentValue = -state.currentValue;
     } else if (state.operator && state.secondValue) {
-      calculate();
+      calculate(true);
       state.currentValue = -state.currentValue;
     }
+
     updateDisplay();
   }
 }

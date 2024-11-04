@@ -53,8 +53,9 @@ export function handleOperator(currentOperator) {
   updateDisplay();
 }
 
-export function calculate() {
+export function calculate(negate=false) {
   let secondValueCopy = state.secondValue || 0;
+
 
   if (state.currentValue.startsWith('-') && state.operator === '-') {
     state.firstValue = '-' + state.currentValue.split(state.operator)[1];
@@ -81,8 +82,12 @@ export function calculate() {
 
   state.firstValue = parseFloat(state.firstValue);
   state.secondValue = parseFloat(state.secondValue);
-  state.lastOperation = state.currentValue;
-
+  if (negate){
+    state.lastOperation = `-(${state.currentValue})`;
+} else{
+      state.lastOperation = state.currentValue;
+}
+  
   if (state.operator === '+') state.currentValue = state.firstValue + state.secondValue;
   else if (state.operator === '-') state.currentValue = state.firstValue - state.secondValue;
   else if (state.operator === '*') state.currentValue = state.firstValue * state.secondValue;
