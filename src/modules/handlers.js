@@ -20,7 +20,7 @@ export function handleValue(value) {
       state.currentValue += '.';
     }
   } else if (value === '%') {
-    if ((!state.operator || state.secondValue?.toString().length > 0) && state.currentValue !== 'Divide by zero' &&  state.currentValue == '!Not a Number' ) {
+    if ((!state.operator || state.secondValue?.toString().length > 0) && state.currentValue !== 'Divide by zero' &&  state.currentValue !== '!Not a Number' ) {
       state.currentValue += '%';
     }
   } else {
